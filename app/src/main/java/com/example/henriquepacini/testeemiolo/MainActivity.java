@@ -5,6 +5,14 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+
+import android.content.Intent;
+
 
 
 public class MainActivity extends Activity {
@@ -13,7 +21,29 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Button registrar = (Button) findViewById(R.id.btnRegister);
+        Button entrar = (Button) findViewById(R.id.btnEntrar);
+
+        registrar.setOnClickListener(onRegister);
+        entrar.setOnClickListener(onEnter);
     }
+
+    private OnClickListener onRegister = new OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent myIntent = new Intent(v.getContext(), Register.class);
+            startActivityForResult(myIntent, 0);
+            finish();
+        }
+    };
+
+    private OnClickListener onEnter = new OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+        }
+    };
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
